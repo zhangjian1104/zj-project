@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
@@ -49,14 +50,14 @@ public abstract class AbstractBaseDomain {
    * 创建时间
    */
   @CreatedDate
-  @Column(name = "o_create_time")
+  @Column(name = "o_create_time", updatable = false)
   LocalDateTime createTime;
 
   /**
    * 创建者Id
    */
   @CreatedBy
-  @Column(name = "o_create_by")
+  @Column(name = "o_create_by", updatable = false)
   Long createBy;
 
   /**

@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.DynamicInsert;
 
 /**
  * Copyright (C), 2018-2020, Zhangjian.
@@ -21,9 +22,10 @@ import lombok.EqualsAndHashCode;
  * @author zhangjian  2018/5/21  22:31
  */
 @Data
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode(callSuper = true)
 @Builder
 @Entity
+@DynamicInsert
 @Table(name = "t_auth_user")
 public class User extends AbstractBaseDomain {
 
@@ -53,8 +55,8 @@ public class User extends AbstractBaseDomain {
 
   /**
    * 是否有效
-   */
-  @Column(name = "o_valid", nullable = false)
+   */  
+  @Column(name = "o_valid",columnDefinition = "bit default 1")
   Boolean isValid;
 
   /**

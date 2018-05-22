@@ -4,6 +4,8 @@
 ## 版本变更履历
 
 #### 2018-05-22
+关于JPA的各种查询操作实例，[参考](https://www.cnblogs.com/rulian/p/6533109.html)
+
 关于Spring boot jpa 操作月表、日表的思考：
 > 通过重写*org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl* 方法指定表映射策略。这样可以保证当前实体对应的是符合业务的最新的表。  
 > 该方式可以解决业务流水数据的操作，如调度表以及GPS表。历史数据原则上应该禁止修改，对于历史数据的查询应该使用自定义@Query（）语句实现。   
@@ -87,7 +89,60 @@
 	  }
 	}
 
+增加默认字段值以及insert时，不插入null值。**@DynamicInsert**  **@Column(name = "o_valid",columnDefinition = "bit default 1")**  
+注意：@DynamicInsert 放在父类时不起作用
 
+	@Data
+	@EqualsAndHashCode(callSuper = true)
+	@Builder
+	@Entity
+	@DynamicInsert
+	@Table(name = "t_auth_user")
+	public class User extends AbstractBaseDomain {
+	
+	  /**
+	   * 用户名
+	   */
+	  @Column(name = "o_name", length = 40, nullable = false)
+	  String name;
+	
+	  /**
+	   * 用户密码
+	   */
+	  @Column(name = "o_password", length = 40, nullable = false)
+	  String password;
+	
+	  /**
+	   * 用户邮件地址
+	   */
+	  @Column(name = "o_email", length = 100)
+	  String email;
+	
+	  /**
+	   * 用户电话号码
+	   */
+	  @Column(name = "o_telephone", length = 40)
+	  String telephone;
+	
+	  /**
+	   * 是否有效
+	   */  
+	  @Column(name = "o_valid",columnDefinition = "bit default 1")
+	  Boolean isValid;
+	
+	  /**
+	   * 登陆时间
+	   */
+	  @Column(name = "o_login_time")
+	  LocalDateTime loginTime;
+	
+	  /**
+	   * 登陆IP
+	   */
+	  @Column(name = "o_login_ip", length = 40)
+	  String loginIp;
+	
+	}
 
 #### 2018-05-21
 
@@ -148,7 +203,7 @@ JPA自定义主键生成策略，注意两点：
 	    }
 	}
 
-	***********************************************************
+
 	@Data
 	@Builder
 	@Entity

@@ -45,19 +45,19 @@ public class UserRepositoryTest {
   @Test
   public void testInsertData() {
     List<User> users = new ArrayList<>();
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 2; i++) {
       User user = User.builder()
           .name("test" + (i + 1))
           .password("password" + i)
           .email("email" + i)
           .telephone("telephone"+(100-i))
-          .isValid(i % 2 < 1)
           .loginIp("10.11.11."+(100-i))
           .loginTime(LocalDateTime.now())          
           .build();
       user.setCreateBy(UuidUtil.getNewUUId());
       user.setUpdateBy(UuidUtil.getNewUUId());
-      
+//      user.setIsValid(false);
+            
       users.add(user);
       System.out.println(user.toString());
     }
