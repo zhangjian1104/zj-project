@@ -6,9 +6,15 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 
 /**
@@ -21,9 +27,10 @@ import org.hibernate.annotations.DynamicInsert;
  *
  * @author zhangjian  2018/5/21  22:31
  */
+
 @Data
+@ToString(callSuper=true)
 @EqualsAndHashCode(callSuper = true)
-@Builder
 @Entity
 @DynamicInsert
 @Table(name = "t_auth_user")
@@ -55,8 +62,8 @@ public class User extends AbstractBaseDomain {
 
   /**
    * 是否有效
-   */  
-  @Column(name = "o_valid",columnDefinition = "bit default 1")
+   */
+  @Column(name = "o_valid", columnDefinition = "bit default 1")
   Boolean isValid;
 
   /**
