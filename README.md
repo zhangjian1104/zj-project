@@ -3,6 +3,31 @@
 
 ## 版本变更履历
 
+#### 2018-05-24
+项目去掉spring data jpa 相关依赖，更换为Mybatis框架  
+
+
+#### 2018-05-23
+关于JPA全局filter，自动增加数据过滤条件  
+[Spring Data Jpa使用Filter过滤数据](https://www.cnblogs.com/alchimistin/p/7872749.html)  
+[数据过滤器注解@Filter 如何在hibernate、spring data jpa中调用](https://my.oschina.net/youway/blog/521833)  
+
+关于对象转换，采用MapStruct自动映射框架
+[官方文档](http://mapstruct.org/documentation/installation/)  
+[实例](https://segmentfault.com/a/1190000011421042)
+
+**调整ORM框架为Mybatis，灵活性更高一些。重新学习Mybatis**  
+[Mybatis 官方文档](http://www.mybatis.org/mybatis-3/zh/java-api.html)  
+[SpringBoot Mybatis 配置 官方说明](http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/)  
+[Mybatis审计功能实现，自定义主键](https://my.oschina.net/stategrace/blog/347272)  
+[Mybatis 教程 ](http://wiki.jikexueyuan.com/project/mybatis-in-action/)
+[Mybatis 关联表查询](https://www.linuxidc.com/Linux/2015-02/113771p5.htm)  
+[Mybatis 分页插件制作](https://www.cnblogs.com/EasonJim/p/7056270.html)  
+[Mybatis 分页插件](https://github.com/pagehelper/Mybatis-PageHelper/blob/master/README_zh.md)   
+[Mybatis pagehelper springboot 集成](https://github.com/pagehelper/pagehelper-spring-boot)  
+[MyBatis 通用 Mapper4](https://github.com/abel533/Mapper/wiki)  
+
+
 #### 2018-05-22
 关于JPA的各种查询操作实例，[参考](https://www.cnblogs.com/rulian/p/6533109.html)
 
@@ -10,7 +35,8 @@
 > 通过重写*org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl* 方法指定表映射策略。这样可以保证当前实体对应的是符合业务的最新的表。  
 > 该方式可以解决业务流水数据的操作，如调度表以及GPS表。历史数据原则上应该禁止修改，对于历史数据的查询应该使用自定义@Query（）语句实现。   
 > ？？需要调查是否可以动态调用映射策略   
-> [参考](https://blog.csdn.net/lmy86263/article/details/69053376)
+> [参考](https://blog.csdn.net/lmy86263/article/details/69053376)  
+> [参考](https://blog.csdn.net/xvshu/article/details/39187779)
 
 关于Spring boot jpa Auditing 的相关说明：  
 **关键词**：@CreatedBy  @LastModifiedBy @CreatedDate  @LastModifiedDate  
